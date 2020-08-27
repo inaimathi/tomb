@@ -27,14 +27,14 @@ Fusce suscipit, mi at iaculis sagittis, arcu lacus dictum libero, eget pulvinar 
 	   "Doesn't truncate long passwords"))
 
    (for-all ((pass a-string)
-	     (cost (one-of 8 9 10 11 12 13 14 15 16 17 18 19 20))
+	     (cost (one-of 8 9 10 11 12 13 14 15 16))
 	     (cipher (one-of :aes :aria :blowfish :camellia :twofish :threefish256 :threefish512 :threefish1024)))
      (is= (entomb pass :salt "salt") (entomb pass :salt "salt"))
      "Works on costs between 8 and 20, and many ECB-capable ciphers from ironclad"))
 
  (subtest "the tomb-matches? function"
    (for-all ((pass a-string)
-	     (cost (one-of 8 9 10 11 12 13 14 15 16 17 18 19 20))
+	     (cost (one-of 8 9 10 11 12 13 14 15 16))
 	     (cipher (one-of :aes :aria :blowfish :camellia :twofish :threefish256 :threefish512 :threefish1024)))
      (is= (tomb-matches? pass (entomb pass :cost cost :cipher-name cipher)) t)
      "Works on everything tomb does")))

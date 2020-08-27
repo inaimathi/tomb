@@ -1,4 +1,4 @@
-# wcrypt
+# tomb
 ### _inaimathi <leo.zovic@gmail.com>_
 
 A toy password hashing library, because 30 minutes of poking around the internet convinced me that there's no native `bcrypt` implementation available for Common Lisp. So, `bcrypt`-inspired, I guess?

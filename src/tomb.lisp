@@ -10,7 +10,9 @@
 	 (output (make-sequence '(SIMPLE-ARRAY (UNSIGNED-BYTE 8) (*)) (length initial-hash))))
     (ironclad:encrypt cipher initial-hash output)
     (loop repeat (expt 2 cost)
-       do (ironclad:encrypt-in-place cipher output))
+       do (ironclad:encrypt-in-place
+	   (ironclad:make-cipher cipher-name :key output :mode :ecb)
+	   output))
     (format nil "$0w$~a$~a$~a$~a"
 	    cipher-name
 	    cost
